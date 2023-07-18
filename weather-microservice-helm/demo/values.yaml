@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: your-docker-registry/weather-microservice-python
+  repository: 818396592856.dkr.ecr.us-east-1.amazonaws.com/demo
   tag: latest
   pullPolicy: IfNotPresent
 
