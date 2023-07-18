@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8-cert-manager-issuers
+  namespace: argocd # Change this to the namespace where you want to deploy the application
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc' # Change this if your Kubernetes API server is different
+    namespace: default # Change this to the target namespace for your application
+  source:
+    repoURL: 'https://charts.adfinis.com' # Replace this with the correct Helm chart repository URL
+    targetRevision: master # Replace this with the specific chart version, tag, or commit hash you want to use
+    path: /path/to/helm/chart # Replace this with the path to the Helm chart within the repository
+    helm:
+      valueFiles:
+        - cert-manager-issuers-values.yaml # Optional: If you have custom values, provide the path to your values file
+  project: default # Replace this with the ArgoCD project you want to deploy the application in
+  syncPolicy:
+    automated: # Set this to true if you want automatic sync, otherwise set it to false
+      prune: true # Set this to true if you want ArgoCD to delete resources not defined in the Helm chart
+      selfHeal: true # Set this to true if you want ArgoCD to self-heal resources to match the desired state
+    syncOptions:
+      - CreateNamespace=true # Set this to true if your Helm chart requires the creation of a new namespace

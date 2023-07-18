@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-autoscaler
+  namespace: argocd
+spec:
+  destination:
+    namespace: kube-system  # The namespace where Cluster Autoscaler will be deployed
+    server: https://kubernetes.default.svc  # The Kubernetes API server URL
+  project: default  # The Argo CD project to which this application belongs
+  source:
+    repoURL: https://github.com/kubernetes/autoscaler.git  # The repository URL of Cluster Autoscaler
+    targetRevision: HEAD  # The specific revision or branch you want to deploy
+    path: cluster-autoscaler  # The path within the repository where Cluster Autoscaler manifests reside
+    helm:
+      # If you're using Helm charts for Cluster Autoscaler
+      valueFiles:
+        - cluster-autoscaler-values.yaml  # Path to your custom values file, if any
+      # Values that you want to override in the Helm chart
+      # values:
+      #   key: value
+  syncPolicy:
+    automated:  # Choose your sync policy based on your preference
+      prune: true  # Whether to automatically remove resources not defined in the source
+      selfHeal: true  # Whether to attempt to self-heal the application if it's out of sync

@@ -1,0 +1,25 @@
+# Default values for cert-manager.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+installCRDs: true
+
+replicaCount: 1
+
+resources: {}
+  # requests:
+  #   cpu: 10m
+  #   memory: 32Mi
+
+prometheus:
+  enabled: false
+
+cainjector:
+  enabled: true
+
+serviceAccount:
+  name: cert-manager
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::${account_id}:role/${cluster_name}-cert-manager
+
+securityContext:
+  fsGroup: 1001

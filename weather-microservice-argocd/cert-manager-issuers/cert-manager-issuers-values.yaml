@@ -1,0 +1,29 @@
+clusterIssuers:
+- name: letsencrypt-prod
+  spec:
+    acme:
+      email: ${email}
+      server: https://acme-v02.api.letsencrypt.org/directory
+      privateKeySecretRef:
+        name: demo-issuer-account-key-prod
+      solvers:
+      - selector:
+          dnsZones:
+            - "${zone}"
+        dns01:
+          route53:
+            region: ${region}
+- name: letsencrypt-staging
+  spec:
+    acme:
+      email: ${email}
+      server: https://acme-staging-v02.api.letsencrypt.org/directory
+      privateKeySecretRef:
+        name: demo-issuer-account-key-staging
+      solvers:
+      - selector:
+          dnsZones:
+            - "${zone}"
+        dns01:
+          route53:
+            region: ${region}
