@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bitnami-jenkins
+  namespace: argocd
+spec:
+  destination:
+    namespace: jenkins
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    chart: jenkins
+    targetRevision: 3.7.0
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - Validate=false
