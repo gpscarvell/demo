@@ -8,7 +8,7 @@ image:
 service:
   name: weather-microservice
   type: ClusterIP
-  port: 5000
+  port: 8080
 
 ingress:
   enabled: false
