@@ -79,9 +79,11 @@ module "eks-cluster" {
   tags = var.tags
 }
 
-
+/*
 resource "null_resource" "kubectl" {
     provisioner "local-exec" {
         command = "aws eks --region us-east-2 update-kubeconfig --name ${var.cluster_name}"
     }
 }
+
+*/

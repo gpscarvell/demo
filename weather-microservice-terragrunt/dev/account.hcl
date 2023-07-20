@@ -2,7 +2,7 @@
 # terragrunt.hcl configuration.
 locals {
   account = {
-    name           = "dev1"
+    name           = "dev2"
     aws_account_id = "818396592856"
     aws_profile    = "dev"
   }
