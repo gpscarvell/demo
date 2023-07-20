@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx-internal
+  name: ingress-nginx-public
   namespace: argocd # Change this to the namespace where you want to deploy the application
 spec:
   destination:
