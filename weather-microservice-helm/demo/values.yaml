@@ -11,12 +11,16 @@ service:
   port: 5000
 
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: nginx
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: weather.example.com
-      paths:
-        - /
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 resources: {}
