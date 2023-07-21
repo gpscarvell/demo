@@ -10,7 +10,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/weather/washignton-dc"
+        path: "/weather/washington-dc"
         backend:
           service:
             name: demo
