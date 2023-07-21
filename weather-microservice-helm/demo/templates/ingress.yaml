@@ -13,7 +13,7 @@ spec:
         path: "/"
         backend:
           service:
-            name: {{ include "weather-microservice.fullname" . }}
+            name: demo
             port:
               number: 8080
 {{- end }}
