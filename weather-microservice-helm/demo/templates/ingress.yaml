@@ -10,7 +10,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/weather/washington-dc"
+        path: "/"
         backend:
           service:
             name: {{ include "weather-microservice.fullname" . }}
