@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: 818396592856.dkr.ecr.us-east-1.amazonaws.com/demo
-  version: master-f3f5631
+  version: master-6dfd0e8
   pullPolicy: IfNotPresent
 
 service:
