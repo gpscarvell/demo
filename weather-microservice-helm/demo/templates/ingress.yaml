@@ -1,25 +1,21 @@
+
 {{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "weather-microservice.fullname" . }}
-  labels:
-    app.kubernetes.io/name: {{ include "weather-microservice.name" . }}
-    helm.sh/chart: {{ include "weather-microservice.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  name: minimal-ingress
   annotations:
-    {{- toYaml .Values.ingress.annotations | nindent 4 }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx-demo
   rules:
-    - host: {{ .Values.ingress.host }}
-      http:
-        paths:
-          - path: {{ . }}
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "weather-microservice.fullname" . }}
-                port:
-                  number: http
-{{- end }}
+  - http:
+      paths:
+      - path: /weather/washignton-dc
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "weather-microservice.fullname" . }}
+            port:
+              number: 8080
+  {{- end}}
