@@ -16,4 +16,4 @@ spec:
             name: {{ include "weather-microservice.fullname" . }}
             port:
               number: 80
-{{ -end}}
+{{- end }}
