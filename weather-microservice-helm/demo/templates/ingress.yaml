@@ -22,5 +22,4 @@ spec:
                 name: {{ include "weather-microservice.fullname" . }}
                 port:
                   number: http
-          {{- end }}
 {{- end }}
