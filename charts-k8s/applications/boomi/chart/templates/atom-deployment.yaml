@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "chart.fullname" . }}-atom
+  labels:
+    io.kompose.service: atom
+  {{- include "chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.atom.replicas }}
+  selector:
+    matchLabels:
+      io.kompose.service: atom
+    {{- include "chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        io.kompose.network/boomi-default: "true"
+        io.kompose.service: atom
+      {{- include "chart.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: ATOM_LOCALHOSTID
+          value: {{ quote .Values.atom.atom.env.atomLocalhostid }}
+        - name: BOOMI_ACCOUNTID
+          value: {{ quote .Values.atom.atom.env.boomiAccountid }}
+        - name: BOOMI_ATOMNAME
+          value: {{ quote .Values.atom.atom.env.boomiAtomname }}
+        - name: BOOMI_PASSWORD
+          value: {{ quote .Values.atom.atom.env.boomiPassword }}
+        - name: BOOMI_USERNAME
+          value: {{ quote .Values.atom.atom.env.boomiUsername }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.atom.atom.image.repository }}:{{ .Values.atom.atom.image.tag
+          | default .Chart.AppVersion }}
+        name: atom
+        ports:
+        - containerPort: 9090
+          hostPort: 9090
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+        - mountPath: /mnt/boomi
+          name: atom-claim0
+      restartPolicy: Always
+      volumes:
+      - name: atom-claim0
+        persistentVolumeClaim:
+          claimName: {{ include "chart.fullname" . }}-claim0

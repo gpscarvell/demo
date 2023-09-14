@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingresses
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'  
+    namespace: cert-manager
+  project: devops        
+  source:
+    repoURL: 'https://github.com/gpscarvell/demo.git'
+    targetRevision: main    
+    path: devops/ingresses/dev
+  syncPolicy:
+    automated:
+      prune: true            
+    syncOptions:
+      - CreateNamespace=true   

@@ -1,0 +1,21 @@
+atom:
+  atom:
+    env:
+      atomLocalhostid: atomName
+      boomiAccountid: accountId
+      boomiAtomname: atomName
+      boomiPassword: test1234
+      boomiUsername: user
+    image:
+      repository: boomi/atom
+      tag: latest
+  ports:
+  - name: "9090"
+    port: 9090
+    targetPort: 9090
+  replicas: 1
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local
+pvc:
+  claim0:
+    storageRequest: 100Mi

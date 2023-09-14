@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: boomi
+  labels:
+    environment: dev
+spec:
+  project: marketing-automation
+  source:
+    path: charts-k8s/applications/boomi/chart
+    repoURL: 'https://github.com/gpscarvell/demo.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles: [values-dev.yaml]
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated: {}

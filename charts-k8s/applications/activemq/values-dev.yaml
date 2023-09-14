@@ -1,0 +1,7 @@
+amq:
+  ports:
+  - name: "61817"
+    port: 61817
+    targetPort: 61616
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local
