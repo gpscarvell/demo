@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: 'https://github.com/gpscarvell/demo.git'
     targetRevision: main    
-    path: devops/ingresses/dev
+    path: charts-k8/devops/ingresses/dev
   syncPolicy:
     automated:
       prune: true            

@@ -7,7 +7,7 @@ metadata:
 spec:
   project: devops
   source:
-    path: devops/aws-ebs-csi-driver
+    path: charts-k8/devops/aws-ebs-csi-driver
     repoURL: 'https://github.com/gpscarvell/demo.git'
     targetRevision: HEAD
     helm:
