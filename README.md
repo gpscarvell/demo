@@ -159,3 +159,4 @@ spec:
 - Change process can be automated with orchastration tools
 - Continuous deployment
 - Working off a unified platform 
+- test
