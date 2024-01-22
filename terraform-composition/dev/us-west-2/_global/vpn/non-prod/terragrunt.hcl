@@ -67,11 +67,7 @@ inputs = {
 
   # Certificates managed with emails
   client_certs = [
-    "geoffrey.scarvell@alkami.com",
-    "tim.mott@alkami.com",
-    "keith.veleba@alkami.com",
-    "zackary.beal@alkami.com",
-    "jared.wilbanks@alkami.com"
+    "geoffrey.scarvell@gmail.com",
   ]
 
   tags = {

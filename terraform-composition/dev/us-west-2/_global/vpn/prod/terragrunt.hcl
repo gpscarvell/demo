@@ -72,13 +72,7 @@ inputs = {
 
   # Certificates managed with emails
   client_certs = [
-    "erik.treutler@stxapp.io",
-    "geoffrey.scarvell@stxapp.io",
-    "hari@stxapp.io",
-    "raquel.shingleton@stxapp.io",
-    "r.simmons.jr@stxapp.io",
-    "justin@stxapp.io",
-    "kannan@stxapp.io",
+    "geoffrey.scarvell@gmail.com",
   ]
 
   tags = {

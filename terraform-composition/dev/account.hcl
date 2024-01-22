@@ -3,7 +3,7 @@
 locals {
   account = {
     name           = "jbondo"
-    aws_account_id = "818396592856"
+    aws_account_id = "XXXXXXXXX"
     aws_profile    = "dev"
   }
   company = {
