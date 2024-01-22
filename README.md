@@ -3,8 +3,9 @@
 
 By running the terragrunt apply_all this repo deploys an AWS VPC, Route53 hosted Zone, AWS VPN, RDS, EKS, EKS node group, Argocd as a controller running in EKS, a weather application and registers the weather application to Route53 private hosted zone using external DNS.  
   
-All subsequent updates to the application will trigger a Github action which will build the Docker image, push the image to ECR, update the helm values file with the commit image tag which will trigger Argocd to deploy the helm charts.  
-This is a small demo to allow you to understand I have the knowledge skills and abilities to build dynamic cloud elastic ephemeral environments, there is much more that I would add in real time environment.
+All subsequent updates to the application will trigger a Github action which will build the Docker image, push the image to ECR, update the helm values file with the commit image tag which will trigger Argocd to deploy the helm chart.  
+  
+This is a small demo to allow you to understand I have the knowledge skills and abilities to build dynamic cloud elastic ephemeral environments, there is much more that I would add in real time environments.
 
 > Deploy infrastructure 
 * use terraform/terragrunt
