@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: activemq-artemis
-          image: vromero/activemq-artemis
+          image: rmohr/activemq
           ports:
             - containerPort: 61616
               name: amqp
