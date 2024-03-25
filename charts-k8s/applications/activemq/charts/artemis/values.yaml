@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
 ## repository and image tag are required
-  repository: vromero/activemq-artemis
+  repository: rmohr/activemq
   tag: latest
   pullPolicy: IfNotPresent
   pullSecrets: []
