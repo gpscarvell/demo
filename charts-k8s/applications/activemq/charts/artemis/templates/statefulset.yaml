@@ -19,6 +19,20 @@ spec:
       labels:
         {{- include "artemis.labels.live" . | nindent 8 }}
     spec:
+      containers:
+        - name: activemq-artemis
+          image: vromero/activemq-artemis
+          ports:
+            - containerPort: 61616
+              name: amqp
+            - containerPort: 5672
+              name: amqps
+            - containerPort: 8161
+              name: http
+            - containerPort: 61613
+              name: stomp
+            - containerPort: 1883
+              name: mqtt
       {{- include "artemis.statefulset.spec" . | nindent 6 }}
           {{- if .Values.ha.enabled }}
           {{- if not .Values.persistence.enabled }}
