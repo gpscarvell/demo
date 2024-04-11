@@ -2,7 +2,7 @@ terraform {
   # NOTE: The second `=` in the string is intentional, and it means
   # exactly version 0.15.0. In other words, we are setting the
   # required_version property of the terraform block to "= 0.15.0".
-  required_version = "= 1.5.3"
+  required_version = "= 1.3.3"
 
   required_providers {
     aws = {

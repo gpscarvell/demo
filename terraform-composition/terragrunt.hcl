@@ -136,8 +136,8 @@ inputs = merge(
 )
 
 # Version constraints
-terraform_version_constraint  = "= 1.5.3"
-terragrunt_version_constraint = "= 0.38.5"
+terraform_version_constraint  = "= 1.3.3"
+terragrunt_version_constraint = "= 0.55.2"
 
 # For the run-all commands to skip the root level terragrunt.hcl
 # The root level terragrunt.hcl file is solely used to DRY up Terraform configuration

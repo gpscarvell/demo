@@ -181,70 +181,36 @@ inputs = {
 
   eks_managed_node_groups = {
     system = {
-      name            = "system"
+      name = "system"
       use_name_prefix = true
 
       ami_release_version = "1.24.10-20230304"
-      capacity_type       = "ON_DEMAND"
-      instance_types      = ["m5.large"]
-      desired_size        = 3
-      max_size            = 5
-      min_size            = 2
+      capacity_type = "ON_DEMAND"
+      instance_types = [
+        "m5.large"]
+      desired_size = 2
+      max_size = 3
+      min_size = 1
 
-      subnet_ids = [dependency.vpc.outputs.private_subnets[0]]
+      subnet_ids = [
+        dependency.vpc.outputs.private_subnets[0]]
 
       labels = {
         Environment = "system"
       }
 
       update_config = {
-        max_unavailable_percentage = 100 # or set `max_unavailable`
+        max_unavailable_percentage = 100
+        # or set `max_unavailable`
       }
 
       launch_template_tags = {
-        "account"      = local.account.name
+        "account" = local.account.name
         "jurisdiction" = local.account_vars.locals.jurisdiction
-        "environment"  = local.env_name
-        "Terraform"    = true
+        "environment" = local.env_name
+        "Terraform" = true
       }
     }
-
-    solr = {
-      name            = "solr"
-      use_name_prefix = true
-
-      ami_release_version = "1.24.10-20230304"
-      capacity_type       = "ON_DEMAND"
-      instance_types      = ["m5.large"]
-      desired_size        = 3
-      max_size            = 3
-      min_size            = 3
-
-      subnet_ids = [dependency.vpc.outputs.private_subnets[0]]
-
-      labels = {
-        Environment = "solr"
-      }
-      taints = [
-        {
-          key    = "dedicated"
-          value  = "solr"
-          effect = "NO_SCHEDULE"
-        }
-      ]
-
-      update_config = {
-        max_unavailable_percentage = 100 # or set `max_unavailable`
-      }
-
-      launch_template_tags = {
-        "account"      = local.account.name
-        "jurisdiction" = local.account_vars.locals.jurisdiction
-        "environment"  = local.env_name
-        "Terraform"    = true
-      }
-    }
-
   }
 
   helm_charts = {

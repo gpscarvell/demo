@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo
+  name: activemq
   labels:
     environment: dev
 spec:
   project: default
   source:
-    path: charts-k8s/applications/demo
+    path: charts-k8s/applications/activemq/charts/artemis
     repoURL: 'https://github.com/gpscarvell/demo.git'
     targetRevision: HEAD
     helm:
-      valueFiles: [values-dev.yaml]
+      valueFiles: [values.yaml]
   destination:
     namespace: default
     server: 'https://kubernetes.default.svc'
