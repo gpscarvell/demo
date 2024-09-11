@@ -4,7 +4,7 @@ image:
 
   repository: 982081074211.dkr.ecr.us-east-1.amazonaws.com/demo
 
-  version: master-8ae6b26
+  version: master-d3bf66d
 
   pullPolicy: IfNotPresent
 
