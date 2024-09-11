@@ -7,7 +7,7 @@ metadata:
 spec:
   project: devops
   source:
-    path: charts-k8/devops/ingress-nginx-public
+    path: charts/devops/ingress-nginx-public
     repoURL: 'https://github.com/gpscarvell/demo.git'
     targetRevision: HEAD
     helm:

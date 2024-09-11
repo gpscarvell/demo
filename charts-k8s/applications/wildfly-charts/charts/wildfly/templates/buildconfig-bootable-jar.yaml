@@ -1,3 +1,0 @@
-{{- if and (.Capabilities.APIVersions.Has "build.openshift.io/v1") (and .Values.build.enabled (eq .Values.build.mode "bootable-jar")) }}
-{{- include "wildfly-common.buildconfig-bootable-jar" (list . "wildfly.metadata.labels") -}}
-{{- end }}

@@ -1,0 +1,5 @@
+# Chart dependencies
+/charts/kube-prometheus-stack/charts
+.idea
+.vscode
+.DS_Store
