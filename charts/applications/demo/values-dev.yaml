@@ -1,14 +1,11 @@
 replicaCount: 1
 
 image:
-<<<<<<< HEAD
+
   repository: 982081074211.dkr.ecr.us-east-1.amazonaws.com/demo
 
   version: master-0aca64f
-=======
-  repository: 818396592856.dkr.ecr.us-east-1.amazonaws.com/demo
-  version: master-c8a8b39
->>>>>>> d5a12b70d1d7be9445b1d1ea1dc7bc5e9cfbfa21
+
   pullPolicy: IfNotPresent
 
 service:
