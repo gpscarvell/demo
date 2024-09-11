@@ -42,11 +42,26 @@ jobs:
         
     - name: Update Version
       run: |
+          #git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          #version=$(cat ./charts/applications/demo/values-dev.yaml | grep version: | awk '{print $2}')
+          #sed -i "s|$version|${GITHUB_REF##*/}-$git_hash|" ./charts/applications/demo/values-dev.yaml
+
+          # Get short git hash
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
-          version=$(cat ./charts/applications/demo/values-dev.yaml | grep version: | awk '{print $2}')
+
+          # Extract the version from values-dev.yaml
+          version=$(grep "version:" ./charts/applications/demo/values-dev.yaml | awk '{print $2}')
+
+          # Ensure variables are printed for debugging purposes
+          echo "Version: $version"
+          echo "GITHUB_REF: ${GITHUB_REF##*/}"
+          echo "Git hash: $git_hash"
+
+          # Replace version using a different delimiter in sed to avoid conflicts
           sed -i "s|$version|${GITHUB_REF##*/}-$git_hash|" ./charts/applications/demo/values-dev.yaml
 
-          
+
+
     - name: Commit and push changes
       uses: devops-infra/action-commit-push@v0.3
       with:
