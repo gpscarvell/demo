@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-ebs-csi-driver
+  labels:
+    environment: dev
+spec:
+  project: default
+  source:
+    path: charts-k8s/devops/aws-ebs-csi-driver
+    repoURL: 'https://github.com/gpscarvell/demo.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles: [values-dev.yaml]
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated: {}

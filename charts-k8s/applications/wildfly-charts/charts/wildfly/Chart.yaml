@@ -1,0 +1,23 @@
+apiVersion: v2
+name: wildfly
+description: Build and Deploy WildFly applications on OpenShift
+type: "application"
+version: 2.4.0
+
+kubeVersion: ">= 1.19.0-0"
+home: https://wildfly.org
+
+maintainers:
+  - email: wildfly-dev@lists.jboss.org
+    name: WildFly
+    url: https://wildfly.org
+icon: https://design.jboss.org/wildfly/logo/final/wildfly_logomark_256px.png
+
+annotations:
+  charts.openshift.io/name: WildFly
+  charts.openshift.io/provider: WildFly
+
+dependencies:
+- name: wildfly-common
+  version: 2.2.0
+  repository: file://../wildfly-common

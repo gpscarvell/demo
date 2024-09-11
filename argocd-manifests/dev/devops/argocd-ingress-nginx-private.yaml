@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-private
+  labels:
+    environment: dev
+spec:
+  project: devops
+  source:
+    path: charts-k8/devops/ingress-nginx-private
+    repoURL: 'https://github.com/gpscarvell/demo.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles: [values-dev.yaml]
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated: {}
